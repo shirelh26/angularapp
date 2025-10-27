@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { USERS } from '../fake_users';
 
 @Component({
@@ -8,6 +8,8 @@ import { USERS } from '../fake_users';
 })
 export class UserComponent {
   selectedUser = USERS[0];
+   @Input() name!: string;
+   @Input() avatar!: string;
 
   get userImgPath() {
     return 'assets/users/' + this.selectedUser.avatar;
@@ -20,4 +22,5 @@ export class UserComponent {
     const randomIndex = Math.floor(Math.random() * USERS.length);
     this.selectedUser = USERS[randomIndex];
   }
+ 
 }
