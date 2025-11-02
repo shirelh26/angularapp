@@ -1,11 +1,10 @@
 <div>
-<button>
-<img>
-<span>User</span>
-</button>
+    <button (click)="onUserClicked()">
+        <img [src]="avatar">
+        <span>{{name}}</span>
+
+    </button>
+
 </div>
-<img [src]="userImgPath" alt="user image">
-<span>{{ userName }}</span>
-<button (click)="changeUser()">החלף משתמש</button>
-<h2>{{ name }}</h2>
-<img [src]="'users/assets/src/' + avatar" alt="{{ name }}">
+
+
