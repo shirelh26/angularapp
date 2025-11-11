@@ -1,23 +1,25 @@
-import { Component, input, Input, Output, EventEmitter } from '@angular/core';
+import { Component,Input, Output, EventEmitter } from '@angular/core';
 import { USERS } from '../fake_users';
+import { UserObj } from './user.model';
+ 
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [User],
+  // imports: [User],
   templateUrl: './user.html',
   styleUrl: './user.css'
 })
+
 export class User {
 
   selectedUser = USERS[0];
-  @Input({ required: true }) name!: string;
-  @Input() avatar!: string;
-  @Input({ required: true }) id!: string;
-  @Output() userClicked = new EventEmitter<string>();
+  @Input({ required: true }) user!: UserObj;
+  @Input({required:true}) isSelected!: boolean;
+  @Output() userClicked = new EventEmitter<any>();
 
   onUserClicked() {
-    this.userClicked.emit(this.id);
+    this.userClicked.emit(this.user.id);
   }
 
   get userImgPath() {

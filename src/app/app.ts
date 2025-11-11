@@ -3,23 +3,25 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { USERS } from './fake_users';
 import { User } from './user/user';
+import { Tasks } from './tasks/tasks';  
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [Header,User],
+  imports: [Header,User,Tasks],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('firstapp');
   users= USERS; 
-  selectedUser = this.users[0];
+  selectedUser?: any;
   
   onUserSelected(userId: string) {
     const userClicked = this.users.find((user)=>user.id === userId)
     console.log('user Clicked from father', userClicked);
+    this.selectedUser = userClicked
   }
 
 }
