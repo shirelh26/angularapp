@@ -1,0 +1,18 @@
+import { Component } from '@angular/core';
+import { FormsModule,NgForm,NgModel } from '@angular/forms';
+
+@Component({
+  selector: 'app-new-task',
+  imports: [FormsModule],
+  templateUrl: './new-task.html',
+  styleUrl: './new-task.css'
+})
+export class NewTask {
+title='Title';
+summary='Summary';
+dueDate='';
+onSubmit(form:NgForm){
+  console.log(this.title);
+  console.log(form);
+}
+}
