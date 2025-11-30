@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule,NgForm,NgModel } from '@angular/forms';
+import { FormsModule,NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-task',

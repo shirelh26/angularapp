@@ -6,7 +6,7 @@
 <label for="title">Title</label>
 <input type="text" id="title" [(ngModel)]="title" name="title" #titleControl="ngModel" required maxlength="18"/>
 </p>
-@if(titleControl.invalid&&titleControl.touched){
+@if(titleControl.invalid && titleControl.touched){
 <p class="error-messages">ERROR</p>
 }
 
