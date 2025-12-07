@@ -1,0 +1,118 @@
+<div class="backdrop"></div>
+<dialog open>
+  <h4>Add User</h4>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+
+      <div>
+        <p>
+          <label for="firstName">First Name</label>
+          <input id="firstName" type="text" formControlName="firstName" />
+        </p>
+
+        <div class="error-messages">
+          @if (form.get('firstName')?.errors?.['required'] && form.get('firstName')?.touched) {
+            <p>First name is required</p>
+          }
+          @if (form.get('firstName')?.errors?.['maxlength'] && form.get('firstName')?.touched) {
+            <p>Maximum length is 18 characters</p>
+          }
+        </div>
+      </div>
+
+      <div>
+        <p>
+          <label for="lastName">Last Name</label>
+          <input id="lastName" type="text" formControlName="lastName" />
+        </p>
+
+        <div class="error-messages">
+          @if (form.get('lastName')?.errors?.['required'] && form.get('lastName')?.touched) {
+            <p>Last name is required</p>
+          }
+        </div>
+      </div>
+
+    </div>
+
+    <p>
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+    </p>
+    <div class="error-messages">
+      @if (form.get('email')?.errors?.['required'] && form.get('email')?.touched) {
+        <p>Email is required</p>
+      }
+      @if (form.get('email')?.errors?.['email'] && form.get('email')?.touched) {
+        <p>Invalid email format</p>
+      }
+    </div>
+
+    <div class="row">
+
+      <p>
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" />
+      </p>
+      <div class="error-messages">
+        @if (form.get('password')?.errors?.['required'] && form.get('password')?.touched) {
+          <p>Password is required</p>
+        }
+        @if (form.get('password')?.errors?.['minlength'] && form.get('password')?.touched) {
+          <p>Minimum length is 6 characters</p>
+        }
+      </div>
+
+      <p>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+      </p>
+      <div class="error-messages">
+        @if (form.get('confirmPassword')?.errors?.['required'] && form.get('confirmPassword')?.touched) {
+          <p>Confirm Password is required</p>
+        }
+        @if (form.errors?.['passwordMismatch'] && form.get('confirmPassword')?.touched) {
+          <p>Passwords do not match</p>
+        }
+      </div>
+
+    </div>
+
+    <div class="categories-section">
+      <label>Task Categories</label>
+      <div class="row">
+
+        <div class="category-row">
+          <label><input type="checkbox" formControlName="work" /> work</label>
+        </div>
+
+        <div class="category-row">
+          <label><input type="checkbox" formControlName="personal" /> personal</label>
+        </div>
+
+        <div class="category-row">
+          <label><input type="checkbox" formControlName="urgent" /> urgent</label>
+        </div>
+
+      </div>
+    </div>
+    <p class="actions">
+        <button type="submit">Add User</button>
+    </p>
+    <div class="categories-section">
+      <label>Task Categories</label>
+      <div class="row" formArrayName="categories">
+        @for (category of availableCategories; track $index) {
+          <div class="category-row">
+            <label>
+              <input type="checkbox" [formControlName]="$index" /> 
+              {{ category }}
+            </label>
+          </div>
+        }
+      </div>
+    </div>
+  </form>
+</dialog>

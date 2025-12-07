@@ -1,4 +1,7 @@
 <app-header></app-header>
+<div class="actions"> 
+<button (click)="onAddUser()">Add User</button>
+</div>
 <main>
     <ul id="users">
     @for(user of users; track user){
@@ -17,8 +20,6 @@
  } @else{
         <p>please selest a user to view his tasks</p>
     }
-
-
 </main>
 
 

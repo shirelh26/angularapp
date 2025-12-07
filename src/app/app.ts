@@ -17,7 +17,14 @@ export class App {
   protected readonly title = signal('firstapp');
   users= USERS; 
   selectedUser?: any;
-  
+  isAddingUser = false;
+
+  onAddUser() {
+    this.isAddingUser = true; 
+  }
+  onCloseNewUserForm() {
+    this.isAddingUser = false; 
+  }
   onUserSelected(userId: string) {
     const userClicked = this.users.find((user)=>user.id === userId)
     console.log('user Clicked from father', userClicked);
