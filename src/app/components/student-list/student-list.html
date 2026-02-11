@@ -1,0 +1,35 @@
+<div style="direction: rtl; padding: 20px;">
+  <h2>רשימת תלמידות</h2>
+
+  <div style="margin-bottom: 20px;">
+    <strong>סינון לפי קורס: </strong>
+    <button [routerLink]="[]" [queryParams]="{ course: 'All' }">All</button>
+    <button [routerLink]="[]" [queryParams]="{ course: 'Angular' }">Angular</button>
+    <button [routerLink]="[]" [queryParams]="{ course: 'React' }">React</button>
+  </div>
+
+  <table border="1" style="width: 100%; text-align: right; border-collapse: collapse;">
+    <thead>
+      <tr style="background: #f4f4f4;">
+        <th>ID</th>
+        <th>שם</th>
+        <th>קורס</th>
+        <th>רמה</th>
+        <th>פעולות</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (student of filteredStudents(); track student.id) {
+        <tr>
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.course }}</td>
+          <td>{{ student.level }}</td>
+          <td>
+            <button [routerLink]="['/student', student.id, 'details']">הצגת פרטים</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

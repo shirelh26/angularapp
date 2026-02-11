@@ -1,0 +1,14 @@
+<div style="direction: rtl; padding: 20px;">
+  @if (student()) {
+    <h2>תלמידה: {{ student().name }}</h2>
+    <nav style="margin-bottom: 15px;">
+      <a routerLink="details" routerLinkActive="active" style="margin-left: 10px;">מידע כללי</a> |
+      <a routerLink="grades" routerLinkActive="active" style="margin-right: 10px;">ציונים</a>
+    </nav>
+    <div style="border: 1px solid #ddd; padding: 15px;">
+      <router-outlet></router-outlet>
+    </div>
+  }
+  <br>
+  <button routerLink="/students">חזרה לרשימה</button>
+</div>

@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+table td, table th {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+}
